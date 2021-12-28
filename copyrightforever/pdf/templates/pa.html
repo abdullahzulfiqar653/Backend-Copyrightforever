@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{object.name}}</title>
+
+    <style>
+      @page {
+        /* size: 1000000mm 297mm portrait; */
+        size: A3 portrait;
+        margin: 0in 0.44in 0.2in 0.44in;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        outline: none;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      html {
+        font-size: 50%;
+        font-family: Fira Sans;
+      }
+      body {
+        padding-top: 50px;
+        line-height: 1;
+      }
+      button {
+        border: none;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      p {
+        text-align: justify;
+      }
+      p {
+        font-size: 1.7rem;
+        line-height: 1.2;
+      }
+      h1 {
+        color: gray;
+        font-size: 10rem;
+      }
+      h3 {
+        font-size: 1.8rem;
+      }
+      span {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      h4 {
+        color: lightgray;
+        font-size: 2.2rem;
+      }
+      h5 {
+        font-size: 1.6rem;
+      }
+      h6 {
+        font-size: 1.5rem;
+      }
+      .container {
+        max-width: 1260px;
+        margin: auto;
+      }
+
+      .form-header {
+        display: flex;
+      }
+
+      .h_col-1 {
+        width: 30%;
+        text-align: justify;
+      }
+      .h_col-2 {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .h_col-2 button {
+        padding: 5px 20px;
+        font-size: 2rem;
+        background-color: lightgrey;
+        font-weight: bold;
+        border: 2px solid black;
+      }
+      .h_col-3 {
+        width: 30%;
+      }
+      .logo-cell {
+        display: flex;
+      }
+
+      .sec > div:nth-child(1) {
+        width: 13%;
+      }
+      .sec > div:nth-child(2) {
+        width: 87%;
+      }
+
+      .sec-1-inputs-row-1 {
+        border-bottom: 3px solid;
+      }
+      .input
+      {
+          width: 100%;
+        overflow: hidden;
+        word-wrap: break-word;
+        font-size: 2rem;
+        font-weight: lighter;
+      }
+      .input-2
+      {
+        height:38px;
+      }
+      .input-1
+      {
+          padding:6px 0 0 0;
+          height:20px;
+      }
+      .checkbox
+      {
+          display: inline-block;
+          width:12px;
+          height:12px;
+          border-radius: 2px;
+          border: 2px solid gray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 3px 0 0;
+      }
+      .sec-1-inputs-row-1 > div:nth-child(1) {
+        margin-top: 5px;
+        height:25px;
+        width: 100%;
+      }
+
+      .sec-1-inputs-row-4 > div {
+        max-width: 17%;
+        overflow: hidden;
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        padding: 0 9px;
+      }
+      .sec-2-inputs-row-1 {
+        position: relative;
+        border-bottom: 3px solid black;
+        justify-content: space-between;
+      }
+      .sec-2-inputs-row-1 > div:nth-child(1) {
+        width: 67%;
+      }
+      .sec-2-inputs-row-1 > div:nth-child(2) {
+        width: 30%;
+      }
+      .sec-2-inputs-row-1
+      {
+        position: relative;
+      }
+
+      .sec-2-inputs-row-4
+      {
+        position: relative;
+      }
+      .sec-2-inputs-row-1::before
+      {
+        position: absolute;
+        left: -3%;
+        top: 5%;
+        font-size: 5rem;
+        color: gray;
+      }
+      .sec-2-inputs-row-4::before {
+        position: absolute;
+        left: -3%;
+        top: 5%;
+        font-size: 5rem;
+        color: gray;
+      }
+
+      .sec-2-inputs-row-1::before {
+        content: "a";
+      }
+
+      .sec-2-inputs-row-4::before {
+        content: "b";
+      }
+
+      .sec-2-inputs-row-7::before {
+        content: "c";
+      }
+
+      .curly {
+        position: relative;
+        padding: 5px 0px;
+        display: flex;
+      }
+
+
+
+      .sec-2-inputs-row-2 > div:nth-child(1) {
+        width: 30%;
+      }
+      .sec-2-inputs-row-2 > div:nth-child(2) {
+        width: 35%;
+        padding-left: 40px;
+      }
+      .sec-2-inputs-row-2 > div:nth-child(3) {
+        width: 35%;
+      }
+
+      .sec-2-inputs-row-3 {
+        border-bottom: 3px solid black;
+      }
+
+
+      .sec-3-inputs-col-1,
+      .sec-3-inputs-col-2 {
+        position: relative;
+      }
+
+      .sec-3-inputs-col-1::before,
+      .sec-3-inputs-col-2::before {
+        position: absolute;
+        left: -10%;
+        top: 20%;
+        font-size: 5rem;
+        color: gray;
+      }
+      .sec-3-inputs-col-2::before {
+        left: 2%;
+      }
+
+      .sec-3-inputs-col-1::before {
+        content: "a";
+      }
+
+      .sec-3-inputs-col-2::before {
+        content: "b";
+      }
+
+
+      .rotate-heading {
+        position: relative;
+      }
+
+      .rotate-heading::before {
+        width: 40%;
+        position: absolute;
+        content: "DO NOT WRITE HERE OFFICE USE ONLY";
+        left: -15%;
+        top: 40%;
+        transform: rotate(-90deg);
+        font-size: 1.7rem;
+        text-align: center;
+      }
+
+      .sec-6-row {
+        position: relative;
+      }
+
+      .sec-6-row::after {
+        position: absolute;
+        right: -3%;
+        top: 30%;
+        font-size: 5rem;
+        color: gray;
+      }
+
+      .sec-6-row-1::after {
+        content: "a";
+      }
+
+      .sec-6-row-2::after {
+        content: "b";
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <div class="form-header">
+        <div class="h_col-1">
+          <h6 style="color:grey ">
+            Copyright Office fees are subject to change. For current fees, check
+            the Copyright Office website at
+            <a href="www.copyright.gov">www.copyright.gov</a>, write the
+            Copy­right Office, or call (202) 707-3000 or 1-877-476-0778 (toll
+            free).
+          </h6>
+          <h6 style="margin-top: 20px">
+            Privacy Act Notice: Sections 408-410 of title 17 of the
+            <em>United States Code</em> authorize the Copyright Office to
+            collect the personally identifying information requested on this
+            form in order to process the application for copyright registration.
+            By providing this information you are agreeing to routine uses of
+            the information that include publication to give legal notice of
+            your copyright claim as required by 17 U.S.C. §705. It will appear
+            in the Office’s online catalog. If you do not provide the
+            information requested, registration may be refused or delayed, and
+            you may not be entitled to certain relief, remedies, and benefits
+            under the copyright law.
+          </h6>
+        </div>
+        <div class="h_col-2">
+<!--          <button>Clear Form</button>-->
+        </div>
+        <div class="h_col-3">
+          <figure class="logo-cell">
+            <img style="width: 50px; height: 45px" src="../logo.png" alt="" />
+            <figcaption>
+              <h3 style="font-size: 2rem">Form PA</h3>
+              <p>For a Work of Performing Arts</p>
+              <p>UNITED STATES COPYRIGHT OFFICE</p>
+            </figcaption>
+          </figure>
+          <hr style="padding: 1px 0px; background-color: black" />
+          <h3>REGISTRATION NUMBER</h3>
+          <p class="flex" style="padding: 50px 0 0 0">
+            <span style="display: inline-block; padding: 0 85px">PA</span>
+            <span style="display: inline-block; padding: 0 30px">PAU</span>
+          </p>
+          <hr style="padding: 1px 0px; background-color: black" ; />
+          <h3>EFFECTIVE DATE OF REGISTRATION</h3>
+          <p class="flex" style="padding: 50px 0 0 0">
+            <span style="display: inline-block; padding: 0 40px">Month</span>
+            <span style="display: inline-block; padding: 0 25px">Day</span>
+            <span style="display: inline-block; padding: 0 25px">Year</span>
+          </p>
+          <hr style="padding: 1px 0px; background-color: black" ; />
+        </div>
+      </div>
+      <!-- header -->
+
+
+      <!-- section1 -->
+      <h3 style="padding: 25px 0 0 0">
+        DO NOT WRITE ABOVE THIS LINE. IF YOU NEED MORE SPACE, USE A SEPARATE
+        CONTINUATION SHEET.
+      </h3>
+      <hr style="padding: 3px 0px; background-color: grey" ; />
+
+      <section class="sec sec-1" style="display: flex">
+        <div>
+          <h1 style="padding: 10px; font-size: 7rem; color: grey">1</h1>
+        </div>
+        <div>
+          <div style="display: flex" class="sec-1-inputs-row-1">
+            <div style="height: 38px;">
+              <h3>
+                TITLE OF THIS WORK ▼
+              </h3>
+              <div class="input input-1">
+                {{object.title_of_work}}
+              </div>
+            </div>
+          </div>
+
+          <h3 style="border-bottom: 3px solid">
+            PREVIOUS OR ALTERNATIVE TITLES ▼
+            <div class="input input-1" style="padding:6px 0 0 0;margin-bottom:
+              5px;">
+              {{object.prior_title}}
+            </div>
+          </h3>
+          <h3 style="border-bottom: 3px solid;">
+            NATURE OF THIS WORK ▼
+            <small>See instructions</small>
+            <div class="input input-1" style="height:70px;padding:6px 0 0
+              0;margin-bottom:
+              5px;">
+              {{object.nature_of_work}}
+            </div>
+          </h3>
+        </div>
+      </section>
+      <hr style="padding: 3px; background-color: grey;" />
+      <!-- section1 -->
+
+    <!-- section2 -->
+      <section class="sec sec-2" style="display: flex">
+        <div>
+          <h1 style="padding: 10px; font-size: 7rem; color: grey">2</h1>
+          <h3 style="font-size: 4rem">NOTE</h3>
+          <p style="font-size:1.9rem;">
+            Under the law, <br />
+            the “author” of <br />
+            a “work made <br />
+            for hire” is <br />
+            generally the <br />
+            employer, not <br />
+            the employee <br />
+            (see instruc- <br />
+            tions). For any <br />
+            part of this <br />
+            work that was <br />
+            “made for hire,” <br />
+            check “Yes” <br />
+            in the space <br />
+            provided, give <br />
+            the employer <br />
+            (or other <br />
+            person for <br />
+            whom the work <br />
+            was prepared) <br />
+            as “Author” of <br />
+            that part, and <br />
+            leave the <br />
+            space for dates <br />
+            of birth and <br />
+            death blank
+          </p>
+        </div>
+        <div class="sec-2-inputs">
+
+          <!-- section-a -->
+          <div class="sec-2-inputs-row-1" style="display: flex">
+            <div>
+              <h3>NAME OF AUTHOR ▼</h3>
+              <div class="input input-1">
+                {{object.name_of_author}}
+              </div>
+            </div>
+            <div>
+              <h3>DATES OF BIRTH AND DEATH ▼</h3>
+              <div style="display: flex">
+                <div style="width:50%;">
+                  <h5>
+                    YEAR BORN
+
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                    {{object.year_of_birth}}
+                  </div>
+                </div>
+                <div style="width:50%;">
+                  <h5 style="width: 50%">
+                    YEAR DIED
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                    {{object.year_of_death}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-2" style="display: flex">
+            <div>
+              <h3>WAS THIS CONTRIBUTION TO THE WORK A “WORK MADE FOR HIRE”?</h3>
+              <div style="padding-left: 70px; padding-top: 10px">
+                <div style="display: flex">
+                  <span class="checkbox">{% if object.work_for_hire %}✔{% endif %}</span>
+                  <span>YES</span>
+                </div>
+                <div style="padding: 20px 0 0 0 ;display: flex;">
+                  <span class="checkbox">{% if not object.work_for_hire %}✔{% endif %}</span>
+                  <span>NO</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>
+                AUTHOR’S NATIONALITY OR DOMICILE <br />
+                <small>Name of Country</small>
+              </h3>
+              <div
+                style="width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                padding-top: 10px;">
+                <div style="width:12%;" class="flex">
+                  <span>OR</span>
+                  <span style="height: 100%; font-size: 5rem">{</span>
+                </div>
+                <div style="width:87%;margin-bottom: 3px">
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Citizen of</p>
+                    <div style="width: 70%;;">
+                      <div class="input input-1" style="margin-left:
+                        3px;padding: 3px 0 0 4px;border-bottom:2px solid
+                        black;">
+                        {{object.citizen_of}}
+                      </div>
+                    </div>
+                  </div>
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Domiciled in</p>
+                    <div style="width: 70%">
+                      <div class="input input-1" style="padding: 3px 0 0
+                        4px;border-bottom:2px solid black;;margin-left: 3px;">
+                        {{object.domiciled_of}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>WAS THIS AUTHOR’S CONTRIBUTION TO THE WORK</h3>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="width: 55%">
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 20px">
+                    <span> Anonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox">{% if object.authorship_anonymous %}✔{% endif %}</span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox">{% if not object.authorship_anonymous %}✔{% endif %}</span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 25px">
+                    <span> Pseudonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox">{% if object.authorship_pseudonymous %}✔{% endif %}</span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox">{% if not object.authorship_pseudonymous %}✔{% endif %}</span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <p style="width: 40%; padding-top: 20px">
+                  if the answer to either of these questions is 'YES',see
+                  detailed instructions
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-3" style="border-top: 2px solid black">
+            <h3>
+              NATURE OF AUTHORSHIP
+              <small>Briefly describe nature of material created by this author
+                in which copyright is claimed</small>. ▼
+            </h3>
+            <div style="display: flex" class="sec-1-inputs-row-1">
+              <div>
+
+                <div class="input input-1">
+                  {{object.nature_of_authorship}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- section-a -->
+
+          <!-- section-b -->
+          <div class="sec-2-inputs-row-1 sec-2-inputs-row-4" style="display:
+            flex">
+            <div>
+              <h3>NAME OF AUTHOR ▼</h3>
+              <div class="input input-2">
+               -
+              </div>
+            </div>
+            <div>
+              <h3>DATES OF BIRTH AND DEATH ▼</h3>
+              <div style="display: flex">
+                <div style="width:50%;">
+                  <h5>
+                    YEAR BORN
+
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                    -
+                  </div>
+                </div>
+                <div style="width:50%;">
+                  <h5 style="width: 50%">
+                    YEAR DIED
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                   -
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-2" style="display: flex">
+            <div>
+              <h3>WAS THIS CONTRIBUTION TO THE WORK A “WORK MADE FOR HIRE”?</h3>
+              <div style="padding-left: 70px; padding-top: 10px">
+                <div style="display: flex">
+                  <span class="checkbox"></span>
+                  <span>YES</span>
+                </div>
+                <div style="padding: 20px 0 0 0 ;display: flex;">
+                  <span class="checkbox"></span>
+                  <span>NO</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>
+                AUTHOR’S NATIONALITY OR DOMICILE <br />
+                <small>Name of Country</small>
+              </h3>
+              <div
+                style="width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                padding-top: 10px;">
+                <div style="width:12%;" class="flex">
+                  <span>OR</span>
+                  <span style="height: 100%; font-size: 5rem">{</span>
+                </div>
+                <div style="width:87%;margin-bottom: 3px">
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Citizen of</p>
+                    <div style="width: 70%;;">
+                      <div class="input input-1" style="margin-left:
+                        3px;padding: 3px 0 0 4px;border-bottom:2px solid
+                        black;">
+                        -
+                      </div>
+                    </div>
+                  </div>
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Domiciled in</p>
+                    <div style="width: 70%">
+                      <div class="input input-1" style="padding: 3px 0 0
+                        4px;border-bottom:2px solid black;;margin-left: 3px;">
+                        -
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>WAS THIS AUTHOR’S CONTRIBUTION TO THE WORK</h3>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="width: 55%">
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 20px">
+                    <span> Anonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 25px">
+                    <span> Pseudonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <p style="width: 40%; padding-top: 20px">
+                  if the answer to either of these questions is 'YES',see
+                  detailed instructions
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-3" style="border-top: 2px solid
+            black;border-bottom: none;">
+
+            <h3>
+              NATURE OF AUTHORSHIP
+              <small>Briefly describe nature of material created by this author
+                in which copyright is claimed</small>. ▼
+            </h3>
+            <div style="display: flex" class="sec-1-inputs-row-1">
+              <div>
+
+                <div class="input input-1">
+                  -
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- section-b -->
+          <!-- section-c -->
+          <div class="sec-2-inputs-row-1 sec-2-inputs-row-7" style="display:
+            flex">
+            <div>
+              <h3>NAME OF AUTHOR ▼</h3>
+              <div class="input input-2">
+               -
+              </div>
+            </div>
+            <div>
+              <h3>DATES OF BIRTH AND DEATH ▼</h3>
+              <div style="display: flex">
+                <div style="width:50%;">
+                  <h5>
+                    YEAR BORN
+
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                    -
+                  </div>
+                </div>
+                <div style="width:50%;">
+                  <h5 style="width: 50%">
+                    YEAR DIED
+                  </h5>
+                  <div class="input input-1" style="padding: 0;">
+                    -
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-2" style="display: flex">
+            <div>
+              <h3>WAS THIS CONTRIBUTION TO THE WORK A “WORK MADE FOR HIRE”?</h3>
+              <div style="padding-left: 70px; padding-top: 10px">
+                <div style="display: flex">
+                  <span class="checkbox"></span>
+                  <span>YES</span>
+                </div>
+                <div style="padding: 20px 0 0 0 ;display: flex;">
+                  <span class="checkbox"></span>
+                  <span>NO</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>
+                AUTHOR’S NATIONALITY OR DOMICILE <br />
+                <small>Name of Country</small>
+              </h3>
+              <div
+                style="width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                padding-top: 10px;">
+                <div style="width:12%;" class="flex">
+                  <span>OR</span>
+                  <span style="height: 100%; font-size: 5rem">{</span>
+                </div>
+                <div style="width:87%;margin-bottom: 3px">
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Citizen of</p>
+                    <div style="width: 70%;;">
+                      <div class="input input-1" style="margin-left:
+                        3px;padding: 3px 0 0 4px;border-bottom:2px solid
+                        black;">
+                        -
+                      </div>
+                    </div>
+                  </div>
+                  <div style="width: 100%;display: flex;">
+                    <p class="curly">Domiciled in</p>
+                    <div style="width: 70%">
+                      <div class="input input-1" style="padding: 3px 0 0
+                        4px;border-bottom:2px solid black;;margin-left: 3px;">
+                        -
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>WAS THIS AUTHOR’S CONTRIBUTION TO THE WORK</h3>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="width: 55%">
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 20px">
+                    <span> Anonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                  <div style="display: flex;justify-content:
+                    space-evenly;padding-top: 25px">
+                    <span> Pseudonymous? </span>
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>YES</span>
+                    </div>
+
+                    <div style="display: flex;">
+                      <span class="checkbox"></span>
+                      <span>No</span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <p style="width: 40%; padding-top: 20px">
+                  if the answer to either of these questions is 'YES',see
+                  detailed instructions
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="sec-2-inputs-row-3" style="border-top: 2px solid
+            black;border-bottom: none;">
+
+            <h3>
+              NATURE OF AUTHORSHIP
+              <small>Briefly describe nature of material created by this author
+                in which copyright is claimed</small>. ▼
+            </h3>
+            <div style="display: flex" class="sec-1-inputs-row-1">
+              <div>
+
+                <div class="input input-1">
+                  -
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- section-c -->
+
+      </section>
+      <hr style="padding: 3px 0px; background-color: grey;" />
+      <!-- section2 -->
+
+ <!-- section3 -->
+        <section class="sec sec-3" style="display: flex">
+          <div>
+            <h1 style="font-size: 7rem; color: grey">3</h1>
+          </div>
+          <div style="display: flex;justify-content: space-between;">
+            <div class="sec-3-inputs-col-1" style="width: 30%">
+              <h3 style="font-size:1.6rem;">YEAR IN WHICH CREATION OF THIS WORK
+                WAS COMPLETED</h3>
+              <div style="display: flex;margin: 5px 0 0 0;">
+                <div style="width: 50%; display: flex; align-items: center">
+                  <div style="width: 30%;">
+                    <span> YEAR </span>
+
+                  </div>
+                  <div class="input input-1" style="border-bottom: 2px solid
+                    ;padding: 0;">
+                   &nbsp; &nbsp; {{object.year_of_authorship}}</div>
+                </div>
+                <div style="width: 50%">
+                  <p style="padding-left: 30px">
+                    <strong>
+                      This information <br />
+                      must be given <br />
+                      in all cases
+                    </strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sec-3-inputs-col-2"
+              style="width: 65%; padding-left: 50px">
+              <h3 style="font-size:1.6rem;">
+                DATE AND NATION OF FIRST PUBLICATION OF THIS PARTICULAR WORK
+              </h3>
+              <div style="display: flex; margin-top: 15px">
+                <p style="width: 35%">
+                  <strong>
+                    Complete this information <br />
+                    ONLY if this work <br />
+                    has been published.
+                  </strong>
+                </p>
+                <div style="width: 50%">
+                  <div style="display: flex">
+                    <div
+                      style="width: 30%;
+                      display: flex;
+                      align-items: flex-end;
+                      justify-content: flex-start;">
+                      <span style="padding-right: 5px;"> MONTH</span>
+                      <div class="input input-1" style="border-bottom: 2px
+                        solid ;padding: 0;">
+                            &nbsp; &nbsp; &nbsp; {{object.month}}</div>
+                    </div>
+                    <div
+                      style="width: 30%;
+                      display: flex;
+                      align-items: flex-end;
+                      justify-content: flex-start;">
+                      <span style="padding: 0 5px 0 0;"> DAY </span>
+                      <div class="input input-1" style="border-bottom: 2px
+                        solid ;padding: 0;">
+                       &nbsp; &nbsp; {{object.day}}</div>
+                    </div>
+                    <div
+                      style="width: 35%;
+                      display: flex;
+                      align-items: flex-end;
+                      justify-content: flex-start;">
+                      <span style="padding: 0 5px 0 0;"> YEAR </span>
+                      <div class="input input-1" style="border-bottom: 2px
+                        solid ;padding: 0;">
+                        &nbsp; &nbsp;{{object.year}}</div>
+                    </div>
+                  </div>
+                  <div
+                    style="display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    padding-top: 20px;">
+                    <span style="padding: 0 5px 0 0;"> NATION </span>
+                    <div class="input input-1" style="border-bottom: 2px solid
+                      ;padding: 0;">
+                      &nbsp; &nbsp; &nbsp;{{object.nation}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr style="padding: 3px 0px; background-color: grey" />
+        <!-- section3 -->
+
+        <!-- section4 -->
+        <section class="sec" style="display: flex">
+          <div>
+            <h1 style="padding: 10px; font-size: 7rem; color: grey">4</h1>
+            <p>
+              See instructions <br />
+              before completing <br />
+              this space.
+            </p>
+          </div>
+          <div style="display: flex; margin-top: 10px">
+            <div style="width: 60%">
+              <h3>
+                COPYRIGHT CLAIMANT(S)
+                <small>
+                  Name and address must be given even if the claimant is the
+                  same
+                  as the author given in space 2. ▼
+                </small>
+
+                <div class="input" style="height:53px">
+                 CLAIMANT(S) Name:&nbsp;{{object.claimant_name}}<br>
+                  address:&nbsp; {{object.claimant_address}}
+                </div>
+
+              </h3>
+              <hr style="padding: 0.5px 0px; background-color: black" ; />
+              <h3>
+                TRANSFER
+                <small>
+                  If the claimant(s) named here in space 4 is (are) different
+                  from
+                  the author(s) named in space 2, give a brief statement of how
+                  the claimant(s) obtained ownership of the copyright. ▼
+                </small>
+
+                <div class="input" style="height:53px;">
+                  reciepient name: &nbsp;{{object.reciepient_name}} <br>
+                  how:&nbsp;{{object.how_obtained_ownership}}
+                </div>
+              </h3>
+            </div>
+
+            <div
+              class="rotate-heading"
+              style="width: 35%; display: flex; border-left: 3px solid">
+              <div style="width: 100%; padding-left: 50px">
+                <p style="padding-bottom: 20px; border-bottom: 1px solid">
+                  APPLICATION RECEIVED
+                </p>
+                <p style="padding-bottom: 20px; border-bottom: 1px solid">
+                  ONE DEPOSIT RECEIVED
+                </p>
+                <p style="padding-bottom: 20px; border-bottom: 1px solid">
+                  TWO DEPOSITS RECEIVED
+                </p>
+                <p style="padding-bottom: 20px">FUNDS RECEIVED</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr style="padding: 3px 0px; background-color: grey" />
+
+        <!-- section4 -->
+        <div
+          style="padding-bottom: 30px;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;">
+          <div
+            style="width:60%;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 10px;
+            padding-left: 100px;">
+            <h3 style="width:25%">
+              MORE ON BACK <i class="fas fa-caret-right"></i>
+            </h3>
+            <ul>
+              <li>
+                Complete all applicable spaces (numbers 5-9) on the reverse side
+                of this page.
+              </li>
+              <ul style="display: flex">
+                <li>See detailed instructions.</li>
+                <li style="padding: 0 10px">Sign the form at line 8.</li>
+              </ul>
+            </ul>
+          </div>
+          <p style="justify-self: flex-end">
+            <strong> DO NOT WRITE HERE </strong> <br />
+            Page 1 of___________pages
+          </p>
+        </div>
+
+        <div
+          style="display: flex; align-items: center; justify-content: flex-end;padding:15px 0 0 0">
+          <div style="width: 40%">
+            <hr style="padding: 5px 0px; background-color: grey" />
+            <div style="display: flex; padding-bottom: 20px">
+              <div style="width: 60%">
+                <p style="border-bottom: 1px solid; padding-bottom: 30px">
+                  EXAMINED BY
+                </p>
+                <p style="padding-bottom: 30px; border-bottom: 3px solid">
+                  CHECKED BY
+                </p>
+                <div style="border-bottom: 3px solid">
+                  <p style="padding-bottom: 5px">CORRESPONDENCE</p>
+                  <div style="display: flex;margin: 0 0 4px 0;">
+                    <span class="checkbox"></span>
+                    <span>YES</span>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 40%">
+                <h5 style="text-align: center">FORM PA</h5>
+                <h6
+                  style="text-align: center;
+                  padding-top: 20px;
+                  color: gray;
+                  font-size: 2rem;">
+                  FOR <br />
+                  COPYRIGHT <br />
+                  OFFICE <br />
+                  USE <br />
+                  ONLY
+                </h6>
+              </div>
+            </div>
+            <hr style="padding: 1.7px 0px; background-color: black" />
+          </div>
+        </div>
+
+        <h3 style="padding-top: 20px">
+          DO NOT WRITE ABOVE THIS LINE. IF YOU NEED MORE SPACE, USE A SEPARATE
+          CONTINUATION SHEET.
+        </h3>
+        <hr style="padding: 5px 0px; background-color: grey" ; />
+
+        <!-- section5 -->
+        <section class="sec-5" style="display: flex">
+          <div style="width: 87%">
+            <p style="padding: 5px 0px">
+              <strong>PREVIOUS REGISTRATION</strong> Has registration for this
+              work, or for an earlier version of this work, already been made in
+              the Copyright Office?
+            </p>
+            <div>
+              <div style="padding: 5px 0px;display: flex;">
+                <div style="display: flex;">
+                  <span class="checkbox">{% if object.previously_registered %}✔ {% endif %}</span>
+                  <span>YES</span>
+                </div>
+                <div style="display: flex;margin-left: 15px;">
+                  <span class="checkbox">{% if not object.previously_registered %}✔{% endif %}</span>
+                  <span>No</span>
+                </div>
+                <span style="padding-left: 10px">If your answer is “Yes,” why is
+                  another registration being
+                  sought? (Check appropriate box.)▼
+                </span>
+              </div>
+              <div style="padding: 5px 0px;display: flex;">
+                <strong> a. </strong>
+                <span class="checkbox" style="margin: 0 5px;">{% if object.first_published_edition_of_work %}✔ {% endif %}</span>
+                <span>
+                  This is the first published edition of a work previously
+                  registered in unpublished form.
+                </span>
+              </div>
+              <div style="padding: 5px 0px;display: flex;">
+                <strong> b. </strong>
+                <span class="checkbox" style="margin: 0 5px;">{% if object.first_application_by_the_author %}✔ {% endif %}</span>
+                <span>
+                  This is the first application submitted by this author as
+                  copyright claimant.
+                </span>
+              </div>
+              <div style="padding: 5px 0px;display: flex;">
+                <strong> c. </strong>
+                <span class="checkbox" style="margin: 0 5px;">{% if object.changed_version_of_the_work %}✔ {% endif %}</span>
+                <span>
+                  This is a changed version of the work, as shown by space 6 on
+                  this application.
+                </span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <div style="width: 48%; border-bottom: 1px solid">
+                <p>
+                  If your answer is “Yes,” give:
+                  <strong>Previous Registration Number ▼</strong>
+                </p>
+                <div class="input input-1">
+                  {{object.prior_reg_number}}
+                </div>
+              </div>
+              <div style="width: 48%; border-bottom: 1px solid;">
+                <p>
+                  <strong>Year of Registration ▼</strong>
+                </p>
+                <div class="input input-1">
+                  {{object.prior_reg_year}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 13%; display: flex; justify-content: flex-end">
+            <h1>5</h1>
+          </div>
+        </section>
+        <hr style="padding: 5px 0px;margin: 3px 0; background-color: grey;" />
+        <!-- section5-->
+
+        <!--section6 -->
+        <section class="sec sec-6" style="display: flex;width: 100%;">
+          <div style="width: 87%">
+            <h3>
+              DERIVATIVE WORK OR COMPILATION
+              <small>
+                N Complete both space 6a and 6b for a derivative work; complete
+                only 6b for a compilation<br/>
+                </small>
+                a. Preexisting Material <small>
+                  Identify any preexisting work or works that this work is based
+                  on or incorporates. ▼
+                </small>
+
+                <div class="input" style="height:53px">
+                  {{object.identify_preexisting_work}}
+                </div>
+
+              </h3>
+              <hr style="padding: 2px 0px; background-color: black" ; />
+              <h3>
+                b. Material Added to This Work
+                <small>
+                  Give a brief, general statement of the material that has been
+                  added to this work and in which copyright is claimed.
+                </small> ▼
+
+                <div class="input" style="height:53px;">
+                  {{object.describe_preexisting_work}}
+                </div>
+              </h3>
+            </div>
+
+            <div
+              style="width: 13%;
+             ">
+              <h1 style="text-align: end;color: grey">6</h1>
+              <p style="text-align: end">
+                See instructions <br />
+                before completing <br />
+                this space.
+              </p>
+            </div>
+          </section>
+          <hr style="padding: 5px 0px; background-color: grey;" />
+          <!-- section-6 -->
+
+          <!-- section7 -->
+          <section class="sec sec-7" style="display: flex">
+            <div style="width: 87%">
+              <div style="border-bottom: 3px solid; padding-bottom: 10px">
+                <p>
+                  <strong>DEPOSIT ACCOUNT NAME</strong> If the registration fee
+                  is
+                  to be charged to a Deposit Account established in the
+                  Copyright
+                  Office, give name and number of Account.
+                </p>
+                <div
+                  class="sec-6-row sec-6-row-1"
+                  style="display: flex; justify-content: space-between">
+                  <div style="width: 48%">
+                    <p>
+                      <strong> Name ▼ </strong>
+                      <div class="input input-1"
+                        style="height:27px;border-bottom: 1px solid">
+                       -</div>
+                    </p>
+                  </div>
+                  <div style="width: 48%;">
+                    <p>
+                      <strong> Account Number ▼ </strong>
+                      <div class="input input-1"
+                        style="height:27px;border-bottom: 1px solid">
+                        -</div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="sec-6-row sec-6-row-2">
+                <strong>CORRESPONDENCE</strong> Give name and address to which
+                correspondence about this application should be sent.
+                Name/Address/Apt/City/State/Zip ▼
+                <div class="input" style="height:53px">
+                -
+                </div>
+              </p>
+              <p style="padding-bottom: 8px">
+                <span>Area code and daytime telephone number (<span
+                    style="width: 5%;display: inline-block;text-align: center;">-</span>
+                  ) ( <span style="width: 15%;display: inline-block;text-align:
+                    center;">-</span> )
+                </span>
+                &emsp14; &emsp14; &emsp14; &emsp14; &emsp14;
+                <span>FAQ Number (<span style="width: 5%;display:
+                    inline-block;text-align: center;">-</span> ) ( <span
+                    style="width: 15%;display: inline-block;text-align:
+                    center;">-</span> )
+                </span>
+              </p>
+              <div style="display: flex;">
+                <p>Email</p>
+                <div class="input input-1" style="margin: 0 0 0 5px;padding:
+                  0;width:40%;">-</div>
+              </div>
+            </div>
+            <div style="width: 13%; display: flex; justify-content: flex-end">
+              <h1 style="color: grey">7</h1>
+            </div>
+          </section>
+          <hr style="padding: 5px 0px; background-color: grey;" />
+
+          <!-- section7 -->
+
+          <!-- section8 -->
+          <section class="sec-8" style="display: flex">
+            <div style="width: 87%">
+              <h3>
+                <strong>CERTIFICATION*</strong><span> I, the undersigned, hereby
+                  certify that I am the</span>
+              </h3>
+              <div class="flex" style="display: flex; justify-content:
+                flex-end">
+                <div style="display: flex;justify-content: center; width: 75%;
+                  padding-top: 30px;">
+                  <span class="flex">
+                    check only one <span style="display: inline-block;transform:
+                      rotate(-90deg);">▼</span>
+                  </span>
+                  <h1 style="font-size: 8rem">{</h1>
+                  <div style="justify-content: flex-start;">
+                    <p style="display: flex;">
+                      <span class="checkbox"></span>
+                      author
+                    </p>
+                    <p style="display: flex;">
+                      <span class="checkbox"></span>
+
+                      other copyright claimant
+                    </p>
+                    <p style="display: flex;">
+                      <span class="checkbox"></span>
+
+                      owner of exclusive right(s)
+                    </p>
+                    <div class="curly-checkbox" style="display: flex;">
+                      <span class="checkbox" style="width:3.7%;"></span>
+                      <p style="width:40%;"> authorized agent of,</p>
+                      <div class="input input-1" style="padding:
+                        0;border-bottom: 1px solid ;">-</div>
+                    </div>
+                    <p>
+                      Name of author or other copyright claimant, or owner of
+                      exclusive right(s) ▲
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p style="text-align: right">
+                of the work identified in this application and that the
+                statements
+                made by me in this application are correct to the best of my
+                knowledge.
+              </p>
+              <hr style="padding: 2px 0px; background-color: black" />
+              <h3 style="padding-bottom: 20px">
+                Typed or printed name and date ▼
+                <span>
+                  If this application gives a date of publication in space 3, do
+                  not
+                  sign and submit it before that date </span>.
+              </h3>
+              <div style="display: flex; justify-content: space-between">
+                <div
+                  style="width: 60%;">
+                  <div class="input input-1" style="padding: 0;border-bottom:
+                    1px solid ;">{{object.employer_name}}
+                  </div>
+                </div>
+                <div
+                  style="width: 30%;display: flex;align-items: center;">
+                  <span style="text-align: right;padding: 0 5px 0 0;">DATE</span>
+                  <div class="input input-1" style="padding: 0;border-bottom:
+                    1px solid ;">{{object.date_of_hiring}}
+                  </div>
+                </div>
+              </div>
+
+              <hr
+                style="padding: 2px 0px; background-color: black; margin-top:
+                6px"
+                />
+
+              <div style="padding-left: 80px">
+                <h3 style="padding-bottom: 20px">Signature (X) ▼</h3>
+                <div style="display: flex">
+                  <strong style="font-size: 2.5rem; margin: 0 5px 0 0;">
+                    X
+                  </strong>
+                  <div class="input input-1" style="padding: 0;border-bottom:1px solid ;">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div style="width: 13%; display: flex; justify-content: flex-end">
+              <h1>8</h1>
+            </div>
+          </section>
+          <!-- section8 -->
+
+          <hr style="padding: 5px 0px; background-color: grey; margin-top: 5px"
+            />
+          <section style="width: 100%;display: flex;">
+            <div style="width:87%;display: flex;align-items: center;justify-content: space-between">
+              <div style="width:10%;">
+            <p style="font-size:2.2rem;text-align: start;">
+              Certificate
+              will be
+              mailed in
+              window
+              envelope
+              to this
+              address:
+            </p>
+              </div>
+              <div style="width:60%;overflow: hidden;border: 1px solid;height:150px">
+                <div style="padding: 0 0 5px 5px;width: 100%">
+                  <h3>Name ▼</h3>
+                  <div class="input input-1" style="height:28px;border-bottom: 1px solid;">
+                    {{object.certification_name}}
+                  </div>
+                </div>
+                <div  style="padding: 0 0 5px 5px;width: 100%;">
+                  <h3>Number/Street/Apt ▼</h3>
+                  <div class="input input-1" style="height:28px;border-bottom: 1px solid;">
+                    {{object.number}}/&nbsp;&nbsp;{{object.claimant_address}}
+                  </div>
+                </div>
+                <div  style="padding: 0 0 5px 5px;width:100%;">
+                  <h3>City/State/Zip▼</h3>
+                  <div class="input input-1" style="height:25px;">
+                    {{object.city}}/&nbsp;&nbsp;{{object.state}}/&nbsp;&nbsp;{{object.zipcode}}
+                  </div>
+                </div>
+              </div>
+              <div style="width:25%;padding-left: 10px;">
+                <h5
+                style="background-color: black; color: white; padding: 3px 10px;font-size: 1.4rem;"
+              >
+                YOU MUST:
+              </h5>
+              <p>• Complete all necessary spaces
+               </p>
+               <p>  • Sign your application in space 8</p>
+               <h5
+               style="background-color: black; color: white; padding: 3px 10px;font-size: 1.4rem;"
+             >
+             SEND ALL 3 ELEMENTS
+             <br/>
+IN THE SAME PACKAGE:
+             </h5>
+             <p>
+              1. Application form</p>
+              <p>
+                2. Nonrefundable filing fee in check or money
+order payable to U.S. Copyright Office
+              </p>
+              <p>3. Deposit material</p>
+              <h5
+              style="background-color: black; color: white; padding: 3px 10px;font-size: 1.4rem;"
+            >
+            MAIL TO:
+            </h5>
+            <p>Library of Congress </p>
+            <p>U.S. Copyright Office-PA</p>
+            <p>101 Independence Avenue SE</p>
+            <p>Washington, DC 20559-6000</p>
+              </div>
+            </div>
+            <div style="width:13%;display:
+              flex;justify-content: flex-end;">
+              <h1 class="flex" style="color: grey">9</h1></div>
+          </section>
+
+          <hr style="padding: 5px 0px; background-color: grey;"
+            />
+          <p>
+            *17 U.S.C. §506(e): Any person who knowingly makes a false
+            representation of a material fact in the application for copyright
+            registration provided for by section 409, or in any written
+            statement
+            filed in connection with the application, shall be fined not more
+            than
+            $2,500
+          </p>
+          <p style="padding-top: 10px">
+            Form PA – Full &emsp14; Rev: 05/2019 &emsp14; Printed on recycled
+            paper
+          </p>
+
+        </div>
+
+      </body>
+    </html>
