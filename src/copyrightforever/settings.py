@@ -93,36 +93,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
+USE_TZ = True
+USE_I18N = True
+USE_L10N = True
+TIME_ZONE = 'UTC'
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# EMAIL_HOST = config('EMAIL_HOST', default='localhost')
-# EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-# EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-SRC_DIR.joinpath('media').as_posix()
+STATIC_ROOT = SRC_DIR.joinpath('static').as_posix()
+
 MEDIA_ROOT = SRC_DIR.joinpath('media').as_posix()
 MEDIA_URL = '/media/'
-
-
 
 
 REST_FRAMEWORK = {
@@ -142,24 +124,13 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'ryksoft@gmail.com'
-# EMAIL_HOST_PASSWORD = 'cwsjhnnhdolgqkkw'
-# EMAIL_USE_TLS = True
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    # 'USER_CHANGED_EMAIL_CONFIRMATION': True,
-    # 'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
-    # 'SEND_CONFIRMATION_EMAIl': True,
     'SET_PASSWORD_RETYPE':True,
-    # 'SEND_ACTIVATION_EMAIl': True,
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
-    # 'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SERIALIZERS': {
         'user_create': 'user.serializers.UserCreateSerializer',
         'user': 'user.serializers.UserCreateSerializer',
