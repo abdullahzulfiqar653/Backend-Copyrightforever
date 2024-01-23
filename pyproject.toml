@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "backend-copyrightforever"
+version = "0.1.0"
+description = ""
+authors = ["abdullahzulfiqar653 <abdullahzulfiqar653@gmail.com>"]
+readme = "README.md"
+packages = [{include = "backend_copyrightforever"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "5.0"
+python-decouple = "^3.8"
+django-cors-headers = "^4.3.1"
+djangorestframework = "^3.14.0"
+djoser = "^2.2.2"
+django-weasyprint = "^2.2.2"
+psycopg2 = "^2.9.9"
+dj-database-url = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
