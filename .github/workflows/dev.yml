@@ -36,7 +36,7 @@ jobs:
         env:
             SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD }}
         run: |
-          ssh target "\
+          ssh target "
             cd project/Backend-Copyrightforever/ && \
             git pull && \
             /home/dev/.local/bin/poetry install && \
