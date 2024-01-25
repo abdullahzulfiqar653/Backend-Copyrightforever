@@ -29,4 +29,4 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --user=$USER --group=$GROUP \
   --bind=127.0.0.1:3005 \
   --log-level=debug \
-  --log-file=/home/dev/logs/copyrightforever_dev.log
+  --log-file=/home/dev/project/logs/copyrightforever_dev.log
