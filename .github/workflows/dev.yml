@@ -36,9 +36,9 @@ jobs:
         env:
             SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD }}
         run: |
-          ssh target "
+          ssh target "\
             cd project/Backend-Copyrightforever/ && \
             git pull && \
             /home/dev/.local/bin/poetry install && \
             echo \"$SUDO_PASSWORD\" | sudo -S supervisorctl restart copyrightforever_dev && \
-            # echo \"$SUDO_PASSWORD\" | sudo -S systemctl reload nginx"
+            echo \"$SUDO_PASSWORD\" | sudo -S systemctl reload nginx"
