@@ -16,6 +16,7 @@ djoser = "^2.2.2"
 django-weasyprint = "^2.2.2"
 psycopg2 = "^2.9.9"
 dj-database-url = "^2.1.0"
+gunicorn = "^21.2.0"
 
 
 [build-system]
