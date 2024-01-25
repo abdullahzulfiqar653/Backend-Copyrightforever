@@ -1,0 +1,43 @@
+name: CI/CD > dev.copyrightforever.com
+
+on:
+  push:
+    branches:
+      - dev
+
+concurrency:
+  group: dev
+  cancel-in-progress: true
+
+jobs:
+  publish-images:
+    name: Connecting to server for deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/github
+          chmod 600 ~/.ssh/github
+          cat >>~/.ssh/config <<END
+          Host target
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/github
+            LogLevel ERROR
+            StrictHostKeyChecking no
+          END
+
+      - name: Run Deploy
+        env:
+            SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD }}
+        run: |
+          ssh target "\
+            cd project/Backend-Copyrightforever/ && \
+            git pull && \
+            /home/dev/.local/bin/poetry install && \
+            echo \"$SUDO_PASSWORD\" | sudo -S supervisorctl restart copyrightforever_dev
